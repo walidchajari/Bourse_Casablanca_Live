@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bourse de Casablanca - Marché des Actions en Direct</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Preload animation styles */
+    body {
+      opacity: 0;
+      animation: bodyFadeIn 0.5s ease-out forwards;
+    }
+    @keyframes bodyFadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-background">
+    <div class="particle" style="--delay: 0s; --x: 10%; --y: 20%;"></div>
+    <div class="particle" style="--delay: 2s; --x: 80%; --y: 10%;"></div>
+    <div class="particle" style="--delay: 4s; --x: 20%; --y: 80%;"></div>
+    <div class="particle" style="--delay: 1s; --x: 90%; --y: 60%;"></div>
+    <div class="particle" style="--delay: 3s; --x: 50%; --y: 50%;"></div>
+    <div class="particle" style="--delay: 5s; --x: 70%; --y: 30%;"></div>
+    <div class="gradient-orb gradient-orb-1"></div>
+    <div class="gradient-orb gradient-orb-2"></div>
+    <div class="gradient-orb gradient-orb-3"></div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-logo-container">
+        <svg class="hero-logo" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="heroLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#1a73e8;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="heroLogoAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <!-- Hexagon background -->
+          <path d="M50 5 L85 27.5 L85 72.5 L50 95 L15 72.5 L15 27.5 Z" fill="url(#heroLogoGradient)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+          <!-- Inner hexagon -->
+          <path d="M50 20 L75 35 L75 65 L50 80 L25 65 L25 35 Z" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <!-- Stock chart icon -->
+          <polyline points="30,60 40,52 50,58 60,45 70,50" stroke="url(#heroLogoAccent)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="30" cy="60" r="3" fill="#f59e0b"/>
+          <circle cx="40" cy="52" r="3" fill="#f59e0b"/>
+          <circle cx="50" cy="58" r="3" fill="#f59e0b"/>
+          <circle cx="60" cy="45" r="3" fill="#f59e0b"/>
+          <circle cx="70" cy="50" r="3" fill="#f59e0b"/>
+          <!-- Accent bars -->
+          <rect x="35" y="66" width="3" height="8" rx="1.5" fill="rgba(255,255,255,0.5)"/>
+          <rect x="48" y="62" width="3" height="12" rx="1.5" fill="rgba(255,255,255,0.6)"/>
+          <rect x="61" y="68" width="3" height="6" rx="1.5" fill="rgba(255,255,255,0.5)"/>
+        </svg>
+      </div>
+      <h1 class="hero-title">Bourse de Casablanca</h1>
+      <p class="hero-subtitle">Marché des Actions en Direct</p>
+      <div class="hero-clock" id="heroClock">--:--:--</div>
+      <div class="hero-market-status" id="heroMarketStatus">
+        <span class="status-dot"></span>
+        <span class="status-text">Marché en Direct</span>
+      </div>
+    </div>
+    <div class="hero-search-wrapper">
+      <svg class="hero-search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input type="text" id="heroSearchInput" class="hero-search-input" placeholder="Rechercher une action par nom ou symbole..." aria-label="Rechercher une action">
+    </div>
+    <div class="hero-theme-toggle">
+      <button class="hero-icon-btn" id="heroThemeToggle" aria-label="Changer le thème" title="Changer le thème">
+        <svg class="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="header-left">
+        <div class="logo">
+          <svg width="36" height="36" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 4px 8px rgba(26, 115, 232, 0.3));">
+            <defs>
+              <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#1a73e8;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <rect width="32" height="32" rx="8" fill="url(#logoGradient)"/>
+            <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="#f59e0b" opacity="0.9"/>
+            <path d="M12 14L16 12L20 14V18L16 20L12 18V14Z" fill="white" opacity="0.95"/>
+          </svg>
+          <div>
+            <h1 class="header-title">Bourse de Casablanca</h1>
+            <p class="header-subtitle">Marché des Actions en Direct ✨</p>
+          </div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="clock" id="clock">--:--:--</div>
+        <button class="icon-btn" id="refreshBtn" aria-label="Rafraîchir les données" title="Rafraîchir les données">
+          <svg class="refresh-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="themeToggle" aria-label="Changer le thème" title="Changer le thème">
+          <svg class="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <!-- Market Indices Section -->
+    <div class="indices-section" id="indicesSection">
+      <!-- Index cards will be generated by JavaScript -->
+    </div>
+
+    <!-- Statistics Panel -->
+    <div class="stats-panel" id="statsPanel">
+      <div class="stat-card">
+        <div class="stat-label">Actions Suivies</div>
+        <div class="stat-value" id="totalStocks">0</div>
+      </div>
+      <div class="stat-card stat-success">
+        <div class="stat-label">En Hausse</div>
+        <div class="stat-value" id="gainers">0</div>
+      </div>
+      <div class="stat-card stat-danger">
+        <div class="stat-label">En Baisse</div>
+        <div class="stat-value" id="losers">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Volume Total</div>
+        <div class="stat-value" id="totalVolume">0</div>
+      </div>
+    </div>
+
+    <!-- Performance Filter -->
+    <div class="performance-filter" id="performanceFilter">
+      <!-- Buttons will be generated by JavaScript -->
+    </div>
+
+    <!-- Filter Info -->
+    <div class="filter-info" id="filterInfo">
+      <!-- Info text will be generated by JavaScript -->
+    </div>
+
+    <!-- Sector Filter -->
+    <div class="sector-filter" id="sectorFilter">
+      <!-- Buttons will be generated by JavaScript -->
+    </div>
+
+    <!-- Stock Cards Grid -->
+    <div class="stocks-grid" id="stocksGrid">
+      <!-- Stock cards will be generated by JavaScript -->
+    </div>
+
+    <!-- News Section -->
+    <section class="news-section" id="newsSection">
+      <div class="news-header">
+        <div class="news-header-left">
+          <h2 class="news-title">
+            <svg class="news-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
+              <path d="M18 14h-8"/>
+              <path d="M15 18h-5"/>
+              <path d="M10 6h8v4h-8V6Z"/>
+            </svg>
+            Actualités de la Bourse
+          </h2>
+          <p class="news-subtitle">Dernières nouvelles &amp; communiqués</p>
+        </div>
+        <div class="news-header-right">
+          <span class="news-update-time" id="newsUpdateTime">Mis à jour: --:--</span>
+          <button class="icon-btn" id="refreshNewsBtn" aria-label="Rafraîchir les actualités" title="Rafraîchir les actualités">
+            <svg class="refresh-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <div class="news-carousel-wrapper">
+        <div class="news-carousel" id="newsCarousel">
+          <!-- News cards will be generated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="spinner"></div>
+    </div>
+  </main>
+
+  <!-- Index Composition Modal -->
+  <div class="modal" id="indexModal">
+    <div class="modal-content">
+      <button class="modal-close" id="indexModalClose" aria-label="Fermer" title="Fermer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div id="indexModalBody">
+        <!-- Modal content will be generated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Modal -->
+  <div class="modal" id="detailModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Fermer" title="Fermer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="modal-body-wrapper" id="modalBody">
+        <!-- Modal content will be generated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="app.js"></script>
+  <script>
+    // Parallax effect
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero-section');
+      if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        hero.style.opacity = 1 - (scrolled / 800);
+      }
+    });
+  </script>
+</body>
+</html>
